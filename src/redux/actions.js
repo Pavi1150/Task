@@ -1,4 +1,3 @@
-// redux/actions.js
 
 export const updateCell = (id, column, value) => ({
   type: 'UPDATE_CELL',

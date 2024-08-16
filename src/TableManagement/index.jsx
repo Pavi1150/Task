@@ -14,36 +14,6 @@ const TableManagement = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.data);
 
-  useEffect(() => {
-    const initialData = [
-      {
-        id: 1,
-        deliverable: 'Instagram Post',
-        name: 'Campaign A',
-        creatorPrice: 0,
-        brandPrice: 0,
-        approved: 'No',
-        goLiveDate: new Date().toISOString(),
-        published: 'No',
-        publishedDate: new Date().toISOString(),
-        postLink: 'https://www.instagram.com/',
-      },
-      {
-        id: 2,
-        deliverable: 'YouTube Video',
-        name: 'Campaign B',
-        creatorPrice: 0,
-        brandPrice: 0,
-        approved: 'No',
-        goLiveDate: new Date().toISOString(),
-        published: 'No',
-        publishedDate: new Date().toISOString(),
-        postLink: 'https://www.youtube.com/',
-      },
-    ];
-    dispatch(setInitialData(initialData));
-  }, [dispatch]);
-
   const renderIcon = (name) => {
     if (name.includes('Instagram')) {
       return <img src={instagram} className='deliverable-icons me-1' />;

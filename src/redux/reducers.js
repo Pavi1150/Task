@@ -1,7 +1,33 @@
 
 const initialState = {
-  data: [],
+  data: [
+    {
+      id: 1,
+      deliverable: 'Instagram Post',
+      name: 'Campaign A',
+      creatorPrice: 0,
+      brandPrice: 0,
+      approved: 'No',
+      goLiveDate: new Date().toISOString(),
+      published: 'No',
+      publishedDate: new Date().toISOString(),
+      postLink: 'https://www.instagram.com/',
+    },
+    {
+      id: 2,
+      deliverable: 'YouTube Video',
+      name: 'Campaign B',
+      creatorPrice: 0,
+      brandPrice: 0,
+      approved: 'No',
+      goLiveDate: new Date().toISOString(),
+      published: 'No',
+      publishedDate: new Date().toISOString(),
+      postLink: 'https://www.youtube.com/',
+    },
+  ]
 };
+
 
 const reducers = (state = initialState, action) => {
   switch (action.type) {
