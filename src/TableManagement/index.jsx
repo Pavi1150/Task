@@ -8,7 +8,7 @@ import { updateCell, setInitialData } from '../redux/actions';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { FaCalendarAlt } from 'react-icons/fa';
-import { TbEditCircle  } from "react-icons/tb";
+import { TbEditCircle } from "react-icons/tb";
 
 const TableManagement = () => {
   const dispatch = useDispatch();
@@ -26,7 +26,8 @@ const TableManagement = () => {
   const [editableCell, setEditableCell] = useState(null);
   const [inputValue, setInputValue] = useState('');
   const [datePicker, setDatePicker] = useState({ column: '', id: null });
-  const [error, setError] = useState('');
+  const [error, setError] = useState({ id: null, column: '', message: '' });
+
   const handleEditClick = (id, column, value) => {
     setEditableCell({ id, column });
     setInputValue(value);
@@ -48,26 +49,31 @@ const TableManagement = () => {
     setDatePicker({ column: '', id: null });
   };
 
-  const handlePostLinkChange = (e, id) => {
+  const handlePostLinkChange = (e) => {
     if (editableCell) {
+      const row = data.find((row) => row.id === editableCell.id);
+      let errorMessage = '';
+
       if (editableCell.column === 'postLink') {
-        const row = data.find(row => row.id === editableCell.id);
         if (row.deliverable.toLowerCase().includes('instagram') && !inputValue.includes('instagram.com/reels')) {
-          setError('Invalid URL. Instagram links must be for Reels.');
-          return;
+          errorMessage = 'Invalid URL. Instagram links must be for Reels.';
         }
         if (row.deliverable.toLowerCase().includes('youtube') && !inputValue.includes('youtube.com/watch')) {
-          setError('Invalid URL. YouTube links must be for videos.');
-          return;
+          errorMessage = 'Invalid URL. YouTube links must be for videos.';
         }
       }
 
-      setError('');
+      if (errorMessage) {
+        setError({ id: editableCell.id, column: editableCell.column, message: errorMessage });
+        return;
+      }
+      setError({ id: null, column: '', message: '' });
       dispatch(updateCell(editableCell.id, editableCell.column, inputValue));
       setEditableCell(null);
       setInputValue('');
     }
   };
+
   return (
     <table className="management-table table table-bordered">
       <thead>
@@ -101,12 +107,12 @@ const TableManagement = () => {
                     value={inputValue}
                     onChange={handleInputChange}
                   />
-               <TbEditCircle  onClick={handleSave}/>
+                  <TbEditCircle onClick={handleSave} />
                 </>
               ) : (
                 <>
                   {row.creatorPrice}
-                  <TbEditCircle  onClick={() => handleEditClick(row.id, 'creatorPrice', row.creatorPrice)} />
+                  <TbEditCircle onClick={() => handleEditClick(row.id, 'creatorPrice', row.creatorPrice)} />
                 </>
               )}
             </td>
@@ -118,12 +124,12 @@ const TableManagement = () => {
                     value={inputValue}
                     onChange={handleInputChange}
                   />
-                  <TbEditCircle  onClick={handleSave}/>
+                  <TbEditCircle onClick={handleSave} />
                 </>
               ) : (
                 <>
                   {row.brandPrice}
-                  <TbEditCircle  onClick={() => handleEditClick(row.id, 'brandPrice', row.brandPrice)} className='me-2'/>
+                  <TbEditCircle onClick={() => handleEditClick(row.id, 'brandPrice', row.brandPrice)} className='me-2' />
                 </>
               )}
             </td>
@@ -185,16 +191,19 @@ const TableManagement = () => {
                     value={inputValue}
                     onChange={handleInputChange}
                   />
-                  <TbEditCircle  onClick={handlePostLinkChange}/>
+                  <TbEditCircle onClick={handlePostLinkChange} />
                 </>
               ) : (
                 <>
                   {row.postLink}
-                  <TbEditCircle  onClick={() => handleEditClick(row.id, 'postLink', row.postLink)} />
+                  <TbEditCircle onClick={() => handleEditClick(row.id, 'postLink', row.postLink)} />
                 </>
               )}
-              {error && <div className="error-message">{error}</div>}
+              {error.id === row.id && error.column === 'postLink' && (
+                <div className="error-message">{error.message}</div>
+              )}
             </td>
+
           </tr>
         ))}
       </tbody>
