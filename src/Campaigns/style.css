@@ -1,0 +1,41 @@
+.management-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.management-nav {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.management-nav a {
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #555555bd;
+  font-weight: bold;
+}
+
+.management-nav a.active {
+  color: rgb(194, 7, 7);
+  font-weight: bold;
+  border-bottom: 2px solid rgb(194, 7, 7);
+}
+
+
+
+.add-creators-button,
+.download-button {
+  padding: 5px 20px;
+    background-color: white;
+    color: red;
+    border: 1px solid red;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.add-creators-button:hover,
+.download-button:hover {
+  background-color: #0056b3;
+}

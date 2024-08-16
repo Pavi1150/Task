@@ -1,0 +1,55 @@
+.accordion-container {
+  margin-bottom: 20px;
+}
+
+.accordion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  background-color: #f9f9f9;
+  padding: 10px;
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+}
+
+.status-dropdown label {
+  margin-right: 10px;
+}
+
+.status-dropdown select {
+  padding: 3px 30px;
+    border-radius: 25px;
+    border: 1px solid black;
+    color: green;
+    font-size: 13px;
+}
+
+.accordion-toggle {
+  margin-left: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.accordion-content {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-top: none;
+}
+.arrow-height{
+  width: 15px;
+  height: 15px;
+}
+
+.add-delivery{
+  color: rgb(215 60 60 / 92%);;
+  text-decoration: underline;
+  font-size: 10px;
+  font-weight: bold;
+}
+.added-text{
+  color: black;
+  text-decoration: none !important;
+  font-size: 10px;
+
+}
