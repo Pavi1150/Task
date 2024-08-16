@@ -1,6 +1,5 @@
 .management-container {
   padding: 20px;
-  font-family: Arial, sans-serif;
 }
 
 .management-nav {
@@ -21,8 +20,6 @@
   border-bottom: 2px solid rgb(194, 7, 7);
 }
 
-
-
 .add-creators-button,
 .download-button {
   padding: 5px 20px;
@@ -35,7 +32,3 @@
     font-weight: bold;
 }
 
-.add-creators-button:hover,
-.download-button:hover {
-  background-color: #0056b3;
-}

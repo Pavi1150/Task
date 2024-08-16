@@ -1,10 +1,10 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './table.css';
 import instagram from "../Icons/instagram.png";
 import youtube from "../Icons/youtube.png";
 import { useDispatch, useSelector } from 'react-redux';
-import { updateCell, setInitialData } from '../redux/actions';
+import { updateCell } from '../redux/actions';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { FaCalendarAlt } from 'react-icons/fa';
@@ -16,9 +16,9 @@ const TableManagement = () => {
 
   const renderIcon = (name) => {
     if (name.includes('Instagram')) {
-      return <img src={instagram} className='deliverable-icons me-1' />;
+      return <img src={instagram} className='deliverable-icons me-1' alt='insta Img'/>;
     } else if (name.toLowerCase().includes('youtube')) {
-      return <img src={youtube} className='deliverable-icons me-1' />;
+      return <img src={youtube} className='deliverable-icons me-1' alt='youtube Img'/>;
     }
     return null;
   };
@@ -107,12 +107,12 @@ const TableManagement = () => {
                     value={inputValue}
                     onChange={handleInputChange}
                   />
-                  <TbEditCircle onClick={handleSave} />
+                  <TbEditCircle onClick={handleSave} className='cursor-pointer'/>
                 </>
               ) : (
                 <>
                   <span className='me-2'>{row.creatorPrice}</span>
-                  <TbEditCircle onClick={() => handleEditClick(row.id, 'creatorPrice', row.creatorPrice)} />
+                  <TbEditCircle onClick={() => handleEditClick(row.id, 'creatorPrice', row.creatorPrice)} className='cursor-pointer'/>
                 </>
               )}
             </td>
@@ -124,12 +124,12 @@ const TableManagement = () => {
                     value={inputValue}
                     onChange={handleInputChange}
                   />
-                  <TbEditCircle onClick={handleSave} />
+                  <TbEditCircle onClick={handleSave} className='cursor-pointer'/>
                 </>
               ) : (
                 <>
                   <span className='me-2'>{row.brandPrice}</span>
-                  <TbEditCircle onClick={() => handleEditClick(row.id, 'brandPrice', row.brandPrice)} className='me-2' />
+                  <TbEditCircle onClick={() => handleEditClick(row.id, 'brandPrice', row.brandPrice)} className='me-2 cursor-pointer' />
                 </>
               )}
             </td>
@@ -154,7 +154,7 @@ const TableManagement = () => {
               ) : (
                 <>
                   <span className='me-2'>{new Date(row.goLiveDate).toLocaleDateString()}</span>
-                  <FaCalendarAlt onClick={() => setDatePicker({ column: 'goLiveDate', id: row.id })} />
+                  <FaCalendarAlt onClick={() => setDatePicker({ column: 'goLiveDate', id: row.id })} className='cursor-pointer'/>
                 </>
               )}
             </td>
@@ -179,7 +179,7 @@ const TableManagement = () => {
               ) : (
                 <>
                   <span className='me-2'>{new Date(row.publishedDate).toLocaleDateString()}</span>
-                  <FaCalendarAlt onClick={() => setDatePicker({ column: 'publishedDate', id: row.id })} />
+                  <FaCalendarAlt onClick={() => setDatePicker({ column: 'publishedDate', id: row.id })} className='cursor-pointer'/>
                 </>
               )}
             </td>
@@ -191,12 +191,12 @@ const TableManagement = () => {
                     value={inputValue}
                     onChange={handleInputChange}
                   />
-                  <TbEditCircle onClick={handlePostLinkChange} />
+                  <TbEditCircle onClick={handlePostLinkChange} className='cursor-pointer'/>
                 </>
               ) : (
                 <>
                   <span className='me-2'>{row.postLink}</span>
-                  <TbEditCircle onClick={() => handleEditClick(row.id, 'postLink', row.postLink)} />
+                  <TbEditCircle onClick={() => handleEditClick(row.id, 'postLink', row.postLink)} className='cursor-pointer'/>
                 </>
               )}
               {error.id === row.id && error.column === 'postLink' && (

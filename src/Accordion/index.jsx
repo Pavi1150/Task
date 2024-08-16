@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './Accordion.css';
 import upArrow from "../Icons/arrowUp.png";
 import downArrow from "../Icons/downArrow.png";
+import userIcon from "../Icons/user.png"
 
 const Accordion = ({ title, children }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,9 +16,12 @@ const Accordion = ({ title, children }) => {
   return (
     <div className="accordion-container">
       <div className="accordion-header" onClick={toggleAccordion}>
-        <div>
+      <div className='d-flex'>
+      <img src={userIcon} className="user-icon me-2 mt-1" alt="User Icon" />
+      <div>
           {title} <span className='ms-2'>{isOpen ? <img src={downArrow} className='arrow-height' alt="Down Arrow" /> : <img src={upArrow} className='arrow-height' alt="Up Arrow" />}</span>
           <div><span className='add-delivery'>Add Deliverable</span> <span className='added-text'>(4 added)</span></div>
+          </div>
         </div>
         <div className="status-dropdown">
           <label>Status:</label>
