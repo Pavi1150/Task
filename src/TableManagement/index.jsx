@@ -111,7 +111,7 @@ const TableManagement = () => {
                 </>
               ) : (
                 <>
-                  {row.creatorPrice}
+                  <span className='me-2'>{row.creatorPrice}</span>
                   <TbEditCircle onClick={() => handleEditClick(row.id, 'creatorPrice', row.creatorPrice)} />
                 </>
               )}
@@ -128,7 +128,7 @@ const TableManagement = () => {
                 </>
               ) : (
                 <>
-                  {row.brandPrice}
+                  <span className='me-2'>{row.brandPrice}</span>
                   <TbEditCircle onClick={() => handleEditClick(row.id, 'brandPrice', row.brandPrice)} className='me-2' />
                 </>
               )}
@@ -153,7 +153,7 @@ const TableManagement = () => {
                 </>
               ) : (
                 <>
-                  {new Date(row.goLiveDate).toLocaleDateString()}
+                  <span className='me-2'>{new Date(row.goLiveDate).toLocaleDateString()}</span>
                   <FaCalendarAlt onClick={() => setDatePicker({ column: 'goLiveDate', id: row.id })} />
                 </>
               )}
@@ -178,7 +178,7 @@ const TableManagement = () => {
                 </>
               ) : (
                 <>
-                  {new Date(row.publishedDate).toLocaleDateString()}
+                  <span className='me-2'>{new Date(row.publishedDate).toLocaleDateString()}</span>
                   <FaCalendarAlt onClick={() => setDatePicker({ column: 'publishedDate', id: row.id })} />
                 </>
               )}
@@ -195,7 +195,7 @@ const TableManagement = () => {
                 </>
               ) : (
                 <>
-                  {row.postLink}
+                  <span className='me-2'>{row.postLink}</span>
                   <TbEditCircle onClick={() => handleEditClick(row.id, 'postLink', row.postLink)} />
                 </>
               )}
